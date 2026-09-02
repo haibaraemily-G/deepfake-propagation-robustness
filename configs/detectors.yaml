@@ -1,0 +1,30 @@
+deepfakebench:
+  repository: https://github.com/SCLBD/DeepfakeBench
+  commit: f188b1c105465e2e5377eb536a95022ae0e4522d
+  upstream_license: CC-BY-NC-4.0
+detectors:
+  - name: UCF
+    upstream_config: training/config/detector/ucf.yaml
+    output_feature: inference output field feat (shared-forgery head feature)
+    feature_dimension: 256
+    pooling: model-internal adaptive pooling
+  - name: LSDA
+    upstream_config: training/config/detector/lsda.yaml
+    output_feature: input to model.model.binary_classifier captured by a forward pre-hook
+    feature_dimension: 512
+    pooling: global average pooling when the captured value is spatial
+  - name: Xception
+    upstream_config: training/config/detector/xception.yaml
+    output_feature: detector output field feat before the final classifier
+    feature_dimension: 2048
+    pooling: global average pooling over spatial dimensions
+  - name: EfficientNet-B4
+    upstream_config: training/config/detector/efficientnetb4.yaml
+    output_feature: detector output field feat before the final classifier
+    feature_dimension: 1792
+    pooling: adaptive global average pooling
+  - name: SPSL
+    upstream_config: training/config/detector/spsl.yaml
+    output_feature: detector output field feat before the final classifier
+    feature_dimension: 2048
+    pooling: global average pooling over spatial dimensions

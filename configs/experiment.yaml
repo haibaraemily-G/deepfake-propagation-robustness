@@ -1,0 +1,83 @@
+version: 1
+identity_seed: 1024
+frame_num: 32
+bootstrap:
+  auc:
+    iterations: 1000
+    seed: 20260605
+    sampling: paired_video_unstratified
+    quantile_method: linear
+  fdr:
+    iterations: 1000
+    seed: 20260605
+    sampling: paired_video_stratified_by_label
+    quantile_method: linear
+datasets:
+  - key: ffpp_c23
+    display_name: FF++ c23
+    expected_rows: 22388
+    expected_real_videos: 140
+    expected_fake_videos: 560
+  - key: celebdf_v2
+    display_name: Celeb-DF-v2
+    expected_rows: 16420
+    expected_real_videos: 178
+    expected_fake_videos: 340
+conditions:
+  - id: D0_clean
+    file_suffix: d0_clean
+  - id: D1_jpeg50
+    file_suffix: d1_jpeg50
+  - id: D2_jpeg30
+    file_suffix: d2_jpeg30
+  - id: D3_resize50
+    file_suffix: d3_resize50
+  - id: D4_resize35
+    file_suffix: d4_resize35
+  - id: D5_combo50_50
+    file_suffix: d5_combo50_50
+  - id: D6_combo30_50
+    file_suffix: d6_combo30_50
+combinations:
+  - dataset: ffpp_c23
+    detector: UCF
+    feature_dim: 256
+    file_template: ucf_{suffix}.npz
+  - dataset: ffpp_c23
+    detector: LSDA
+    feature_dim: 512
+    score_file_template: lsda_feat_gap_{suffix}.npz
+    auc_score_file_template: lsda_{suffix}.npz
+    feature_file_template: lsda_feat_gap_{suffix}.npz
+  - dataset: ffpp_c23
+    detector: Xception
+    feature_dim: 2048
+    file_template: xception_gap_ffpp_{suffix}.npz
+  - dataset: ffpp_c23
+    detector: EfficientNet-B4
+    feature_dim: 1792
+    file_template: effnb4_ffpp_{suffix}.npz
+  - dataset: ffpp_c23
+    detector: SPSL
+    feature_dim: 2048
+    file_template: spsl_gap_ffpp_{suffix}.npz
+  - dataset: celebdf_v2
+    detector: UCF
+    feature_dim: 256
+    file_template: ucf_celebdf_{suffix}.npz
+  - dataset: celebdf_v2
+    detector: LSDA
+    feature_dim: 512
+    file_template: lsda_feat_celebdf_{suffix}.npz
+  - dataset: celebdf_v2
+    detector: Xception
+    feature_dim: 2048
+    file_template: xception_gap_celebdf_{suffix}.npz
+  - dataset: celebdf_v2
+    detector: EfficientNet-B4
+    feature_dim: 1792
+    file_template: effnb4_celebdf_{suffix}.npz
+  - dataset: celebdf_v2
+    detector: SPSL
+    feature_dim: 2048
+    file_template: spsl_gap_celebdf_{suffix}.npz

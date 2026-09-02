@@ -1,0 +1,31 @@
+path,category,source
+SOURCE_FILES.csv,Research-added,Complete file-level provenance inventory
+README.md,Research-added,Release documentation aligned with manuscript v22
+SOURCE_PROVENANCE.md,Research-added,File-level source classification policy
+LICENSE,Research-added,MIT authorization for original release files
+THIRD_PARTY_NOTICES.md,Third-party-dependency,Dependency and upstream-license notice
+CODE_AVAILABILITY.md,Research-added,Anonymous or public release instructions
+REPRODUCIBILITY_CHECKLIST.md,Research-added,Release and reproducibility checks
+requirements.txt,Research-added,Audited analysis environment pins
+configs/conditions.yaml,Research-added,Frozen D0-D6 study protocol
+configs/detectors.yaml,Third-party-reference,Frozen detector integration metadata
+configs/experiment.yaml,Research-added,Frozen main-experiment file registry
+scripts/__init__.py,Research-added,Package marker
+scripts/common.py,Research-added,Independent data validation and metrics helpers
+scripts/degradations.py,Research-added,Independent implementation of D0-D6
+scripts/deepfakebench_export_helpers.py,Research-added,Independent output contract helpers
+scripts/reconstruct_identity.py,Research-added,Independent reproduction of evaluated row order
+scripts/compute_metrics.py,Research-added,Independent frame and video metrics FDR and score shift
+scripts/bootstrap_auc.py,Research-added,Independent paired video AUC bootstrap
+scripts/bootstrap_fdr.py,Research-added,Independent paired video FDR bootstrap
+scripts/build_paper_outputs.py,Research-added,Independent v22 Table 1 and Table 2 plus figure generation
+scripts/make_synthetic_example.py,Research-added,Artificial self-test generator
+scripts/compare_csv.py,Research-added,Numeric output comparison utility
+scripts/hash_release.py,Research-added,SHA256 manifest generator
+examples/README.md,Research-added,Synthetic example instructions
+expected_outputs/README.md,Generated-example-result,Frozen result provenance and hashes
+expected_outputs/auc_bootstrap_summary.csv,Generated-example-result,Frozen 10-combination manuscript Table 2 summary
+expected_outputs/fdr_bootstrap_summary.csv,Generated-example-result,Frozen 10-combination FDR bootstrap summary
+expected_outputs/manuscript_table1_d6_frame_auc_fdr.csv,Generated-example-result,Frozen 10-combination manuscript Table 1 summary
+CODE_RELEASE_AUDIT.md,Generated-example-result,Superseded v1 audit notice
+MANIFEST_SHA256.txt,Generated-example-result,SHA256 manifest produced after audit

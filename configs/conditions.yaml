@@ -1,0 +1,41 @@
+version: 1
+color_order: BGR
+resize_interpolation: OpenCV INTER_LINEAR
+jpeg_codec: OpenCV in-memory JPEG encode/decode
+conditions:
+  - id: D0_clean
+    file_suffix: d0_clean
+    operation: clean
+    description: No additional degradation.
+  - id: D1_jpeg50
+    file_suffix: d1_jpeg50
+    operation: jpeg
+    quality: 50
+    description: JPEG quality 50.
+  - id: D2_jpeg30
+    file_suffix: d2_jpeg30
+    operation: jpeg
+    quality: 30
+    description: JPEG quality 30.
+  - id: D3_resize50
+    file_suffix: d3_resize50
+    operation: resize
+    scale: 0.50
+    description: Downsample to 0.50 and resize back to the original size.
+  - id: D4_resize35
+    file_suffix: d4_resize35
+    operation: resize
+    scale: 0.35
+    description: Downsample to 0.35 and resize back to the original size.
+  - id: D5_combo50_50
+    file_suffix: d5_combo50_50
+    operation: resize_then_jpeg
+    scale: 0.50
+    quality: 50
+    description: Resize 0.50 first, then JPEG quality 50.
+  - id: D6_combo30_50
+    file_suffix: d6_combo30_50
+    operation: resize_then_jpeg
+    scale: 0.50
+    quality: 30
+    description: Resize 0.50 first, then JPEG quality 30.
