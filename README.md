@@ -9,12 +9,12 @@ DeepfakeBench source tree.
 
 The release supports:
 
-- manuscript Table 1: the 10-combination D6 frame-level AUC and FDR diagnosis,
-  including paired-video bootstrap intervals for the D6/D0 FDR ratio;
-- manuscript Table 2: the 10-combination D0-to-D6 video-level AUC drop and
-  paired-video bootstrap intervals;
-- intermediate D0–D6 frame metrics, video AUC, score shifts, FDR, and the main
-  diagnostic figures.
+- current manuscript Table 1: the 10-combination D0-to-D6 video-level AUC
+  drop and paired-video bootstrap intervals;
+- current manuscript Table 2: the 10-combination D6/D0 FDR ratio and
+  stratified-video bootstrap intervals;
+- intermediate D0–D6 frame metrics, video AUC, score shifts, FDR, and the
+  selected diagnostic figures listed below.
 
 Manuscript Table 3 is outside this release. It is the bounded
 FaceForensics++ c23 case study covering validation-based Platt calibration and
@@ -158,7 +158,7 @@ The row identity file is JSON Lines. Each row contains:
 
 `frame_path` may be relative. The analysis uses it only for the legacy
 DeepfakeBench grouping retained in an intermediate performance field. It is
-not the video identity used for manuscript Table 2. Statistical bootstrap
+not the video identity used for current manuscript Table 1. Statistical bootstrap
 always uses the complete `video_id`.
 
 The file-name mapping for all 70 main outputs is in
@@ -225,9 +225,9 @@ python scripts/build_paper_outputs.py \
 Frame AUC, AP, EER, and accuracy use each saved frame. Accuracy uses a strict
 probability threshold greater than 0.5. The intermediate performance file also
 retains a historical video-AUC field grouped by parent frame directory; that
-field is not manuscript Table 1.
+field is not current manuscript Table 1.
 
-Manuscript Table 2 uses complete video identities. It averages frame scores
+Current manuscript Table 1 uses complete video identities. It averages frame scores
 within each video, samples videos with replacement, and applies the same
 sampled videos to D0 and D6. The historical AUC bootstrap was not
 class-stratified. It uses 1,000 iterations,
@@ -257,9 +257,9 @@ reported separately for real and fake frames.
   `work/paper_outputs/intermediate_d0_d6_performance.csv`;
 - intermediate D0–D6 diagnosis data:
   `work/paper_outputs/intermediate_d0_d6_diagnosis.csv`;
-- manuscript Table 1 data:
+- legacy-named D6 frame-AUC/FDR summary (supporting current Table 2 and Results):
   `work/paper_outputs/manuscript_table1_d6_frame_auc_fdr.csv`;
-- manuscript Table 2 data:
+- current manuscript Table 1 video-AUC data (legacy filename retained):
   `work/paper_outputs/manuscript_table2_video_auc_bootstrap.csv`;
 - FDR bootstrap summary:
   `work/paper_outputs/table_fdr_bootstrap.csv`;
@@ -268,7 +268,8 @@ reported separately for real and fake frames.
 - D0–D6 frame-level AUC curve:
   `work/paper_outputs/fig_main_auc_curve_d0_d6.png`.
 
-The frozen 10-row summaries for manuscript Tables 1 and 2 are in
+The frozen 10-row summaries supporting current manuscript Tables 1 and 2
+retain their historical filenames and are in
 `expected_outputs/`. Compare generated and frozen CSVs with an absolute
 numeric tolerance of `1e-12`:
 
@@ -284,7 +285,7 @@ python scripts/compare_csv.py \
   --tolerance 1e-12
 ```
 
-The second comparison expects the generated Table 2 file to preserve the
+The second comparison expects the generated video-AUC file to preserve the
 frozen bootstrap summary columns. Manuscript Table 3 has no generation command
 or expected output in this release.
 
@@ -338,7 +339,7 @@ python scripts/build_paper_outputs.py \
   upstream source is not copied into this package.
 - OpenCV JPEG output can vary across codec builds. Record the OpenCV version.
 - An intermediate performance field preserves a legacy video grouping for
-  continuity. Manuscript Table 2 and its intervals use complete video
+  continuity. Current manuscript Table 1 and its intervals use complete video
   identities.
 - Manuscript Table 3 is outside this release; the package supports Table 1,
   Table 2, and the listed diagnostic analyses only.

@@ -10,14 +10,14 @@
 - [x] Frame AUC, legacy intermediate video AUC, AP, EER, and accuracy are
   implemented without confusing their sampling units.
 - [x] Paired video AUC bootstrap is implemented with the frozen historical
-  sampling rule and supports manuscript Table 2.
+  sampling rule and supports current manuscript Table 1.
 - [x] Score shifts are implemented separately for real and fake frames.
 - [x] FDR uses float64, `ddof=0`, epsilon `1e-8`, and direct D6/D0 division.
 - [x] Paired stratified video FDR bootstrap preserves video multiplicities and
-  supports manuscript Table 1 intervals.
-- [x] Manuscript Table 1 and Table 2 output names match v22.
+  supports current manuscript Table 2 intervals.
+- [x] Historical output filenames are mapped to the current Table 1 and Table 2 in the README.
 - [x] Manuscript Table 3 is explicitly outside the release.
-- [x] Table and main-figure generation is implemented for the stated scope.
+- [x] Selected table and figure generation is implemented for the stated scope.
 - [x] Row identity reconstruction uses `frame_num=32` and seed 1024.
 - [x] AUC and FDR bootstrap seeds are fixed at 20260605.
 - [x] Synthetic self-test covers the released analysis sequence.
